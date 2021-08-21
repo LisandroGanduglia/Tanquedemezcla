@@ -4,12 +4,12 @@ Mi sistema representa un tanque con un motor donde se realiza una mezcla de dos 
 
 Al encenderse el sistema se abre la válvula A donde ingresa el primer componente, cuando llega al nivel deseado, se cierra la válvula A y se abre la válvula B hasta que el segundo componete llegue al nivel deseado, una vez finalizada la carga se cierra la válvula B y se acciona el motor que facilitara la mezcla, luego de cierto tiempo se detiene el motor y se abre la válvula C por donde saldrá el nuevo compuesto.
 <p align="center">
-  <img width="500" height="500" src="https://github.com/LisandroGanduglia/Tanquedemezcla/blob/main/recursos/esquematanque.png">
+  <img width="500" height="500" src="https://github.com/LisandroGanduglia/Tanquedemezcla/blob/main/Recursos/esquematanque.png">
 </p>
 
 ## Maquina de estado
 <p align="center">
-  <img width="500" height="500" src="https://github.com/LisandroGanduglia/Tanquedemezcla/blob/main/recursos/maquinadeestado.png">
+  <img width="500" height="500" src="https://github.com/LisandroGanduglia/Tanquedemezcla/blob/main/Recursos/maquinadeestado.png">
 </p>
 
 - SET: Bandera de fin de inicialización
