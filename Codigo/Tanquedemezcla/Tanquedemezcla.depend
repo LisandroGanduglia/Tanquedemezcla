@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1630870996 source:/home/lisandro/Escritorio/UTNLICHA/Inf2/Tp Info/Tanquedemezcla/Codigo/Tanquedemezcla/main.c
+	<stdlib.h>
+	<string.h>
+	"mylib.h"
+
+1630871320 /home/lisandro/Escritorio/UTNLICHA/Inf2/Tp Info/Tanquedemezcla/Codigo/Tanquedemezcla/mylib.h
+	<stdio.h>
+
