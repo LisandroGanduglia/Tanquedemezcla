@@ -12,14 +12,129 @@ Al encenderse el sistema se abre la válvula A donde ingresa el primer component
   <img width="500" height="500" src="https://github.com/LisandroGanduglia/Tanquedemezcla/blob/main/Recursos/maquinadeestado.png">
 </p>
 
-- SET: Bandera de fin de inicialización
+- __SET__: Bandera de fin de inicialización
 
-- n: Nivel leído
+- __n__: Nivel leído
 
-- na_set: Nivel configurado del liquido A
+- __na_set__: Nivel configurado del liquido A
 
-- nb_set: Nivel configurado del liquido b
+- __nb_set__: Nivel configurado del liquido b
 
-- t: Tiempo del motor activo leído
+- __t__: Tiempo del motor activo leído
 
-- tm_set: Tiempo configurado para el motor activo
+- __tm_set__: Tiempo configurado para el motor activo
+
+### Código
+
+- Archivo de cabecera __mylib.h__
+```c
+#ifndef MYLIB_H_INCLUDED
+#define MYLIB_H_INCLUDED
+#include <stdio.h>
+
+
+typedef enum {
+  cargar = 0,
+  mezclar = 1,
+  descargar = 2
+}estado_tanque;
+
+
+typedef struct{
+    int n; //nivel leido
+    int na_set; //nivel liquido A
+    int nb_set; //nivel liquido B
+    int t; //Tiempo del motor activo leído
+    int tm_set; //Tiempo configurado para el motor activo
+}nivel_tanque;
+
+
+nivel_tanque f_inicio(void); // lee el archivo de configuración y carga las variables.
+estado_tanque f_cargar(nivel_tanque);
+estado_tanque f_mezclar(nivel_tanque);
+estado_tanque f_descargar(nivel_tanque);
+
+#endif
+
+```
+- Archivo __main.c__
+```c
+#include <stdlib.h>
+#include <string.h>
+#include "mylib.h"
+
+char * getKey(char *key);
+
+int main(int argc, char const *argv[]) {
+    nivel_tanque config;
+    FILE *conf;
+    char cadena[40], *key, *val;
+    char variables[5][20]= {"NivelLeido","NivelA","NivelB","Tiempomotor","TiempoActivom"},i;
+    if ((conf = fopen("confing.conf","rb")) == NULL){
+        printf("No se encontro archivo de configuracion\n");
+        return 1;
+    }
+
+    fgets(cadena,40,conf);
+    do {
+        key = cadena;
+        if((*key) != '#' && strlen(key) >= 0){
+            val = getKey(key);
+            for(i = 0; i<5; i++){
+                if(!strcmp(key,variables[i])){
+                    switch(i){
+                    case 0: config.n = atoi(val);
+                        break;
+                    case 1: config.na_set = atoi(val);
+                        break;
+                    case 2: config.nb_set = atoi(val);
+                        break;
+                    case 3: config.t = atoi(val);
+                        break;
+                    case 4: config.tm_set = atoi(val);
+                        break;
+                        }
+                }
+            }
+        }
+        fgets(cadena,40,conf);
+    }while (!feof(conf));
+
+estado_tanque estado = cargar; // primer estado
+config = f_inicio();
+while (1){
+    switch (estado){
+    case cargar:estado = f_cargar(config);
+         break;
+    case mezclar:estado = f_mezclar(config);
+         break;
+    case descargar:estado = f_descargar(config);
+         break;
+    }
+}
+    return 0;
+}
+char * getKey(char *key){
+char i =0;
+
+    while(*(key+1) != ' '){
+        i++;
+    }
+    *(key+i)=0;
+    return key+i+1;
+}
+```
+- Archivo __config.conf__
+```bash
+# n Nivel leído
+n 0
+# nA Nivel configurado del liquido A
+na_set 3
+# nB Nivel configurado del liquido b
+nb_set 5
+# Tiempo del motor activo
+t 0
+# Tiempo configurado para el motor activo
+tm_set 2
+
+```
