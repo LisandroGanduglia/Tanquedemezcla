@@ -4,6 +4,11 @@
 	<string.h>
 	"mylib.h"
 
-1630871320 /home/lisandro/Escritorio/UTNLICHA/Inf2/Tp Info/Tanquedemezcla/Codigo/Tanquedemezcla/mylib.h
+1631316419 /home/lisandro/Escritorio/UTNLICHA/Inf2/Tp Info/Tanquedemezcla/Codigo/Tanquedemezcla/mylib.h
 	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1631316527 source:/home/lisandro/Escritorio/UTNLICHA/Inf2/Tp Info/Tanquedemezcla/Codigo/Tanquedemezcla/funciones.c
+	"mylib.h"
 
