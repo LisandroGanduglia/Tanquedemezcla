@@ -1,4 +1,3 @@
-#include "mylib.h"
 #include "funciones.c"
 
 int main(int argc, char const *argv[]) {

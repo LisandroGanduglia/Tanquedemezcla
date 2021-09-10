@@ -33,7 +33,6 @@ Al encenderse el sistema se abre la válvula A donde ingresa el primer component
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-char * getKey(char *key);
 
 
 
@@ -58,6 +57,35 @@ nivel_tanque config;
 estado_tanque f_cargar(nivel_tanque);
 estado_tanque f_mezclar(nivel_tanque);
 estado_tanque f_descargar(nivel_tanque);
+
+
+#endif
+```
+- Archivo __main.c__
+```c
+#include "funciones.c"
+
+int main(int argc, char const *argv[]) {
+
+estado_tanque estado = cargar; // primer estado
+config = f_inicio();
+while (1){
+    switch (estado){
+    case cargar:estado = f_cargar(config);
+         break;
+    case mezclar:estado = f_mezclar(config);
+         break;
+    case descargar:estado = f_descargar(config);
+         break;
+    }
+}
+    return 0;
+}
+
+```
+- Archivo __funciones.c__
+```c
+#include "mylib.h"
 
 char * getKey(char *key){
 char i =0;
@@ -103,30 +131,6 @@ while(*(key+1) != ' '){
     *(key+i)=0;
     return key+i+1;
     }
-#endif
-```
-- Archivo __main.c__
-```c
-
-#include "mylib.h"
-
-int main(int argc, char const *argv[]) {
-
-estado_tanque estado = cargar; // primer estado
-config = f_inicio();
-while (1){
-    switch (estado){
-    case cargar:estado = f_cargar(config);
-         break;
-    case mezclar:estado = f_mezclar(config);
-         break;
-    case descargar:estado = f_descargar(config);
-         break;
-    }
-}
-    return 0;
-}
-
 ```
 - Archivo __config.conf__
 ```bash
