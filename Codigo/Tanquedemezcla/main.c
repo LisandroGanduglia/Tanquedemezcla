@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <string.h>
+
 #include "mylib.h"
 
 int main(int argc, char const *argv[]) {

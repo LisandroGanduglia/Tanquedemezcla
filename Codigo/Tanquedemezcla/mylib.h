@@ -1,6 +1,8 @@
 #ifndef MYLIB_H_INCLUDED
 #define MYLIB_H_INCLUDED
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 char * getKey(char *key);
 
 
