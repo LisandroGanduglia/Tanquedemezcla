@@ -62,6 +62,7 @@ estado_tanque f_descargar(nivel_tanque);
 #endif
 ```
 - Archivo __main.c__
+> con Switch case
 ```c
 #include "funciones.c"
 
@@ -80,6 +81,19 @@ while (1){
     }
 }
     return 0;
+}
+- Archivo __mainpunteros.c__
+> con Punteros
+```c
+#include "funciones.c"
+
+int main(int argc, char const *argv[]) {
+    estado_tanque estado = cargar; // primer estado
+    estado_tanque (*p[])(nivel_tanque) = {f_cargar, f_mezclar, f_descargar}
+    config = f_inicio();
+    while(1) estado = (*p[estado])(config);
+
+  return 0;
 }
 
 ```
