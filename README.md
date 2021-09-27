@@ -62,7 +62,7 @@ estado_tanque f_descargar(nivel_tanque);
 #endif
 ```
 - Archivo __main.c__
-> con Switch case
+> con Switch Case
 ```c
 #include "funciones.c"
 
@@ -82,6 +82,8 @@ while (1){
 }
     return 0;
 }
+
+```
 - Archivo __mainpunteros.c__
 > con Punteros
 ```c
